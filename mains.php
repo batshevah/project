@@ -1,5 +1,5 @@
 <?php
-$queryDND = "select preference from preferences where (ix'".."');";
+$queryDND = "select preference from preferences where (ix=$ix);";
   	$resultDND = $GLOBALS['myCon']->query($queryDND);
   	$savedIndexes=null;
   	if($resultDND->num_rows > 0)
@@ -23,16 +23,14 @@ $queryDND = "select preference from preferences where (ix'".."');";
 
 function toggle(item)
 {
-	 var bodyElement=$(item.offsetParent).find(".portlet-body")[0];
-	 
-     //$(bodyElement).fadeToggle("slow");
-     
+     var bodyElement=$(item.offsetParent).find(".portlet-body")[0];
+	      
      var ele=item.offsetParent.id.substr(1);
 	 if($(item).hasClass("fa-caret-up"))
 	 {
 	  $(item.offsetParent).find(".fa-sync-alt").hide();
 	  $(item).removeClass("fa-caret-up").addClass("fa-caret-down");
-	  $(item).attr('data-content', "<?php echo $GLOBALS["langarr_file"]->get('toggleOut')?>");
+	  $(item).attr('data-content', "toggleOut");
 	  if(toggleBoxes[ele]==1)
 	     	return;
 	  
@@ -41,7 +39,7 @@ function toggle(item)
 	 }
 	else {
 	  $(item).removeClass("fa-caret-down").addClass("fa-caret-up");
-	  $(item).attr('data-content', "<?php echo $GLOBALS["langarr_file"]->get('toggleIn')?>");
+	  $(item).attr('data-content', "toggleIn");
       $(item.offsetParent).find(".fa-sync-alt").show();
       $(item.offsetParent).find(".fa-sync-alt").trigger("click"); 
 	   toggleBoxes=replaceAt(ele,"0",toggleBoxes);
@@ -68,7 +66,7 @@ function toggle(item)
 function saveDNDprefer(){
  savedIndexes=draggedBoxes.join(",");
  savedIndexes+=":"+toggleBoxes;
-  $.post("saveDNDprefer.php?savedIndexes="+savedIndexes+"&auth=<?php echo $_COOKIE['authenticated'] ?>", function(data){
+  $.post("saveDNDprefer.php?savedIndexes="+savedIndexes+"&auth=<?php echo $ix ?>", function(data){
    });
 };
 
