@@ -37,9 +37,9 @@
       <div class="portlet-header">
               <h4 class="portlet-title">Attendance Status </h4>
               <span ><i onclick="return toggle(this)" class="fal fa-caret-up  pull-left ui-popover" data-toggle="tooltip" data-placement=right	data-trigger="hover" data-content=toggleIn aria-hidden="true" ></i></span>
-              <span ><i id="refreshAttStats" class="far fa-sync-alt rotate pull-'.$GLOBALS["langarr_file"]->get("left").'" aria-hidden="true" ></i></span>
+              <span ><i id="refreshAttStats" class="far fa-sync-alt rotate pull-left aria-hidden="true" ></i></span>
               <br>
-            <font id="AttStats_last_update" last class="pull-left></font>
+            <font id="AttStats_last_update" class="pull-left"></font>
             </div>
             <div class="portlet-body"  >
 		       	<ul id="myTab1" class="nav nav-tabs">
@@ -55,7 +55,7 @@
             </ul>
               <div class="row" id="AttStatsContainer"></div>
 			  <div id="AttStats_loading" class="initialText loading"><h3>Loading..</h3></div>
-			  <div id="AttStats_invalid" class="initialText" style="display:none;"><h3>invalid")</h3></div>
+			  <div id="AttStats_invalid" class="initialText" style="display:none;"><h3>invalid</h3></div>
             </div>
           </div>
       </div>
